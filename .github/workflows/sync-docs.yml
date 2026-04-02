@@ -12,7 +12,7 @@ jobs:
 
       - name: Send docs to BuddyAssist
         run: |
-          CONTENT=$(cat README.md | tr '\n' ' ')
+          CONTENT=$(sed ':a;N;$!ba;s/\n/ /g' README.md)
           curl -X POST https://docassist-tcylx.ondigitalocean.app/api/v1/documentation/69c8f39f4ec171758fb1e1dc/webhook-ingest \
             -H "Content-Type: application/json" \
             -H "x-webhook-token: ${{ secrets.BUDDYASSIST_TOKEN }}" \
