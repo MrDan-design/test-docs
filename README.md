@@ -1,11 +1,10 @@
-# test-docs
-buddy-test-documentation
-# BuddyAssist Test Docs
+# BuddyAssist Test
 
-## Login
-Use POST /login to authenticate users.
+This is a GitHub integration test.
 
-## Users
-Use GET /users to fetch all users.
-## New Feature
-Webhook test from GitHub integration
+API Endpoints:
+
+POST /login → logs in user  
+GET /users → returns users  
+
+Special phrase: DANIEL_TEST_SUCCESS_123
