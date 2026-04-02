@@ -10,10 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Send docs to BuddyAssist
+      - name: Send README to BuddyAssist
         run: |
-          CONTENT=$(sed ':a;N;$!ba;s/\n/ /g' README.md)
+          CONTENT=$(cat README.md | sed 's/"/\\"/g' | tr '\n' ' ')
+          
           curl -X POST https://docassist-tcylx.ondigitalocean.app/api/v1/documentation/69c8f39f4ec171758fb1e1dc/webhook-ingest \
             -H "Content-Type: application/json" \
-            -H "x-webhook-token: ${{ secrets.BUDDYASSIST_TOKEN }}" \
+            -H "x-webhook-token: da_dc255010bf9577f02e037674d4a8886217a1958c2893d855e6e9e8d6a0bf9cd5" \
             -d "{\"documents\":[{\"title\":\"README\",\"content\":\"$CONTENT\",\"doc_type\":\"guide\"}]}"
